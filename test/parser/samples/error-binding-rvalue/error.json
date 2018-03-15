@@ -1,5 +1,5 @@
 {
-	"message": "Expected Identifier or MemberExpression",
+	"message": "Expected identifier or member expression",
 	"pos": 19,
 	"loc": {
 		"line": 1,

@@ -141,7 +141,7 @@ export function readDirective(
 
 		expression = readExpression(parser, expressionStart, quoteMark);
 		if (directive.allowedExpressionTypes.indexOf(expression.type) === -1) {
-			parser.error(`Expected ${directive.allowedExpressionTypes.join(' or ')}`, expressionStart);
+			parser.error(`Expected ${directive.allowedExpressionTypes.map(humanize).join(' or ')}`, expressionStart);
 		}
 	}
 
@@ -175,4 +175,8 @@ function getShorthandValue(start: number, name: string) {
 			},
 		},
 	];
+}
+
+function humanize(str) {
+	return str.replace(/[a-z][A-Z]/g, chars => `${chars[0]} ${chars[1]}`).toLowerCase();
 }
