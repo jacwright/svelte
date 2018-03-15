@@ -51,6 +51,14 @@ const DIRECTIVES = {
 			}
 		},
 	},
+
+	Behavior: {
+		names: [ 'add' ],
+		allowedExpressionTypes: [ 'Identifier', 'MemberExpression' ],
+		attribute(start, end, type, name, expression) {
+			return { start, end, type, name, value: expression };
+		},
+	}
 };
 
 
@@ -83,7 +91,7 @@ function readExpression(parser: Parser, start: number, quoteMark: string|null) {
 			} else {
 				str += char;
 			}
-		} else if (/[\s\r\n\/>]/.test(char)) {
+		} else if (/[\s\/>]/.test(char)) {
 			break;
 		} else {
 			str += char;
